@@ -1,31 +1,48 @@
 # Laravel Reviewable
 
-## Installation
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
+[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Quality Score][ico-code-quality]][link-code-quality]
+[![Total Downloads][ico-downloads]][link-downloads]
 
-First, pull in the package through Composer.
+## Install
 
-```js
-composer require draperstudio/laravel-reviewable:1.0.*@dev
+Via Composer
+
+``` bash
+$ composer require draperstudio/laravel-reviewable
 ```
 
 And then include the service provider within `app/config/app.php`.
 
-```php
+``` php
 'providers' => [
     DraperStudio\Reviewable\ReviewableServiceProvider::class
 ];
 ```
 
 At last you need to publish and run the migration.
+
 ```
 php artisan vendor:publish --provider="DraperStudio\Reviewable\ReviewableServiceProvider" && php artisan migrate
 ```
 
------
+## Usage
 
 ### Setup a Model
-```php
+``` php
 <?php
+
+/*
+ * This file is part of Laravel Reviewable.
+ *
+ * (c) DraperStudio <hello@draperstudio.tech>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace App;
 
@@ -40,7 +57,7 @@ class Post extends Model implements Reviewable
 ```
 
 ### Create a review
-```php
+``` php
 $user = User::first();
 $post = Post::first();
 
@@ -54,7 +71,7 @@ dd($review);
 ```
 
 ### Update a review
-```php
+``` php
 $review = $post->updateReview(1, [
     'title' => 'new title',
     'body' => 'new body',
@@ -63,6 +80,48 @@ $review = $post->updateReview(1, [
 ```
 
 ### Delete a review
-```php
+``` php
 $post->deleteReview(1);
 ```
+
+## Change log
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Testing
+
+``` bash
+$ composer test
+```
+
+## Contributing
+
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+
+## Security
+
+If you discover any security related issues, please email hello@draperstudio.tech instead of using the issue tracker.
+
+## Credits
+
+- [DraperStudio][link-author]
+- [All Contributors][link-contributors]
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[ico-version]: https://img.shields.io/packagist/v/DraperStudio/laravel-reviewable.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/DraperStudio/Laravel-Reviewable/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/DraperStudio/laravel-reviewable.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/DraperStudio/laravel-reviewable.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/DraperStudio/laravel-reviewable.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/DraperStudio/laravel-reviewable
+[link-travis]: https://travis-ci.org/DraperStudio/Laravel-Reviewable
+[link-scrutinizer]: https://scrutinizer-ci.com/g/DraperStudio/laravel-reviewable/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/DraperStudio/laravel-reviewable
+[link-downloads]: https://packagist.org/packages/DraperStudio/laravel-reviewable
+[link-author]: https://github.com/DraperStudio
+[link-contributors]: ../../contributors

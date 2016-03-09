@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace DraperStudio\Reviewable\Presenters;
+namespace DraperStudio\Tests\Reviewable;
 
-use DraperStudio\Database\Presenters\BasePresenter;
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
- * Class ReviewPresenter.
+ * This is the service provider test class.
  *
  * @author DraperStudio <hello@draperstudio.tech>
  */
-class ReviewPresenter extends BasePresenter
+class ServiceProviderTest extends AbstractTestCase
 {
-    //
+    use ServiceProviderTrait;
 }
